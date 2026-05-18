@@ -919,7 +919,9 @@ section.dark .value p { color: rgba(246, 241, 232, 0.7); }
   border: 1px dashed var(--line);
   position: relative;
   margin-bottom: 18px;
+  transition: border-color 0.25s ease;
 }
+.leader:hover .leader-photo { border-color: var(--brass); border-style: solid; }
 .leader-photo .placeholder-label {
   position: absolute;
   bottom: 14px;
@@ -986,7 +988,9 @@ section.dark .value p { color: rgba(246, 241, 232, 0.7); }
   background: var(--cream-warm);
   border: 1px dashed var(--line);
   position: relative;
+  transition: border-color 0.25s ease;
 }
+.news-item:hover .news-thumb { border-color: var(--brass); border-style: solid; }
 .news-thumb .placeholder-label {
   position: absolute;
   bottom: 12px;
