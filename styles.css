@@ -351,6 +351,7 @@ section.dark .property-card { background: var(--navy-deep); border-color: rgba(2
   font-family: var(--font-display);
   font-size: 17px;
   font-weight: 500;
+  color: var(--navy);
 }
 .prop-loc .adr {
   font-size: 13px;
