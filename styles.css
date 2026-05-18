@@ -43,6 +43,151 @@ h1, h2, h3, h4 {
   color: var(--ink);
 }
 
+/* ============================================================
+   CANONICAL TYPE SCALE — every page renders the same way.
+   Override only where a context genuinely needs a different
+   treatment (hero on dark bg, investor band lighter weight).
+   ============================================================ */
+h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 300; }
+h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 400; line-height: 1.15; }
+h3 { font-size: 20px; font-weight: 500; line-height: 1.3; }
+h4 { font-size: 14px; font-weight: 600; line-height: 1.3; }
+
+/* ============================================================
+   BODY PARAGRAPH CLASSES — three sizes, no inline drift.
+   ============================================================ */
+/* Narrative copy in story / approach sections (Our Story, Our Approach) */
+.prose p,
+.section-narrative p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 18px;
+}
+.prose p:last-child,
+.section-narrative p:last-child { margin-bottom: 0; }
+.prose > p + p { margin-top: 0; }
+section.dark .prose p,
+section.dark .section-narrative p { color: rgba(246, 241, 232, 0.78); }
+
+/* Smaller body — response notes, franchise descriptions, callouts */
+.body-note {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* Property card description (sits at the bottom of each card) */
+.prop-summary {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  font-weight: 300;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  margin-top: 4px;
+}
+
+/* Footer wire-verification small print */
+.wire-verify {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 10px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   SECTION-NARRATIVE — eyebrow + h2 + body paragraphs pattern
+   used on About > Our Story and Index > Our Approach.
+   ============================================================ */
+.section-narrative .eyebrow {
+  display: inline-block;
+  margin-bottom: 16px;
+}
+.section-narrative h2 { margin-bottom: 22px; }
+.section-narrative p {
+  font-size: 16px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 18px;
+}
+.section-narrative p:last-of-type { margin-bottom: 28px; }
+.section-narrative .btn { margin-top: 6px; }
+
+/* ============================================================
+   PORTFOLIO STATS BLOCK (Properties page header strip)
+   ============================================================ */
+.portfolio-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+  margin-bottom: 72px;
+  padding: 28px 32px;
+  background: var(--cream-warm);
+  border-left: 3px solid var(--brass);
+}
+.portfolio-stat .stat-num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  color: var(--navy);
+  font-weight: 400;
+  line-height: 1;
+}
+.portfolio-stat .stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+/* ============================================================
+   CONTACT-NOTE callout (Contact page "A note on response")
+   ============================================================ */
+.contact-note {
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--cream-warm);
+  border-left: 3px solid var(--brass);
+}
+.contact-note .eyebrow {
+  color: var(--brass);
+  display: block;
+  margin-bottom: 10px;
+}
+.contact-note p { margin: 0; }
+
+/* ============================================================
+   FRANCHISE / BRAND BLOCK (Properties page Marriott/Choice)
+   ============================================================ */
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+.brand-block {
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
+}
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--navy);
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+.brand-meta {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
 a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
 a:hover { color: var(--brass); }
 
@@ -212,11 +357,10 @@ footer .eyebrow {
 }
 .hero .eyebrow { color: var(--brass); margin-bottom: 24px; display: block; }
 .hero h1 {
-  font-size: clamp(36px, 6vw, 64px);
-  font-weight: 300;
   color: var(--cream);
   max-width: 800px;
   margin-bottom: 28px;
+  /* size + weight inherit from canonical h1 */
 }
 .hero p.lead {
   font-size: clamp(15px, 1.6vw, 18px);
@@ -259,12 +403,11 @@ section.dark h1, section.dark h2, section.dark h3 { color: var(--cream); }
 .section-head { margin-bottom: 56px; max-width: 720px; }
 .section-head .eyebrow { margin-bottom: 16px; display: inline-block; }
 .section-head h2 {
-  font-size: clamp(30px, 4vw, 48px);
-  font-weight: 400;
   margin-bottom: 20px;
+  /* size + weight inherit from canonical h2 */
 }
 .section-head p {
-  font-size: clamp(15px, 1.4vw, 17px);
+  font-size: 16px;
   color: var(--ink-soft);
   line-height: 1.75;
   font-weight: 300;
@@ -410,11 +553,11 @@ section.dark .prop-addr { color: rgba(246, 241, 232, 0.55); }
   align-items: center;
 }
 .investor-inner h2 {
-  font-size: clamp(30px, 4vw, 44px);
   font-weight: 300;
   color: var(--cream);
   line-height: 1.2;
   margin-bottom: 18px;
+  /* size inherits from canonical h2 */
 }
 .investor-inner p {
   color: rgba(246, 241, 232, 0.75);
@@ -554,7 +697,8 @@ section.dark .value p { color: rgba(246, 241, 232, 0.7); }
   margin-top: 40px;
 }
 .strategy-item {
-  background: var(--cream);
+  background: var(--navy-deep);
+  color: var(--cream);
   padding: 32px 36px;
   display: block;
 }
@@ -563,10 +707,11 @@ section.dark .value p { color: rgba(246, 241, 232, 0.7); }
   font-size: 22px;
   font-weight: 400;
   margin-bottom: 10px;
+  color: var(--cream);
 }
 .strategy-item p {
   font-size: 15px;
-  color: var(--ink-soft);
+  color: rgba(246, 241, 232, 0.75);
   font-weight: 300;
   line-height: 1.7;
 }
@@ -591,11 +736,10 @@ section.dark .value p { color: rgba(246, 241, 232, 0.7); }
 .page-hero-inner { max-width: var(--max); margin: 0 auto; position: relative; }
 .page-hero .eyebrow { color: var(--brass); }
 .page-hero h1 {
-  font-size: clamp(40px, 6vw, 68px);
-  font-weight: 300;
   color: var(--cream);
   margin: 20px 0 24px;
   max-width: 800px;
+  /* size + weight inherit from canonical h1 — same as .hero h1 */
 }
 .page-hero p.lead {
   font-size: clamp(16px, 1.5vw, 19px);
@@ -925,7 +1069,7 @@ section.dark .value p { color: rgba(246, 241, 232, 0.7); }
   color: var(--brass);
 }
 .property-hero-info h1 {
-  font-size: clamp(32px, 4.5vw, 52px);
+  font-size: clamp(32px, 5vw, 56px); /* slightly smaller than canonical h1 — product page */
   font-weight: 300;
   color: var(--cream);
   margin: 18px 0 20px;
@@ -973,9 +1117,8 @@ section.dark .value p { color: rgba(246, 241, 232, 0.7); }
   border-top: 1px solid var(--line);
 }
 .property-narrative h2 {
-  font-size: clamp(28px, 3.5vw, 40px);
-  font-weight: 400;
   margin-bottom: 20px;
+  /* size + weight inherit from canonical h2 */
 }
 .property-narrative p {
   font-size: 16px;

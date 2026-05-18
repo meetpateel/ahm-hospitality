@@ -47,16 +47,16 @@
 <section>
   <div class="section-inner">
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 24px; margin-bottom: 72px; padding: 28px 32px; background: var(--cream-warm); border-left: 3px solid var(--brass);">
-      <div><div style="font-family: var(--font-display); font-size: 32px; color: var(--navy); font-weight: 400;">5</div><div style="font-size: 11px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 6px;">Properties</div></div>
-      <div><div style="font-family: var(--font-display); font-size: 32px; color: var(--navy); font-weight: 400;">2</div><div style="font-size: 11px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 6px;">Operating</div></div>
-      <div><div style="font-family: var(--font-display); font-size: 32px; color: var(--navy); font-weight: 400;">3</div><div style="font-size: 11px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 6px;">Converting</div></div>
-      <div><div style="font-family: var(--font-display); font-size: 32px; color: var(--navy); font-weight: 400;">300+</div><div style="font-size: 11px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; margin-top: 6px;">Total Keys</div></div>
+    <div class="portfolio-stats">
+      <div class="portfolio-stat"><div class="stat-num">5</div><div class="stat-label">Properties</div></div>
+      <div class="portfolio-stat"><div class="stat-num">2</div><div class="stat-label">Operating</div></div>
+      <div class="portfolio-stat"><div class="stat-num">3</div><div class="stat-label">Converting</div></div>
+      <div class="portfolio-stat"><div class="stat-num">300+</div><div class="stat-label">Total Keys</div></div>
     </div>
 
     <div class="section-head" style="margin-bottom: 40px;">
       <span class="eyebrow">Operating Assets</span>
-      <h2 style="font-size: clamp(26px, 3.5vw, 38px); font-weight: 400; margin-top: 12px;">Stable cash flow, <em>established</em> markets.</h2>
+      <h2>Stable cash flow, <em>established</em> markets.</h2>
     </div>
 
     <div class="property-grid" style="margin-bottom: 80px;">
@@ -77,7 +77,7 @@
             </div>
             <div class="prop-addr">4545 W Homefield Dr, Sioux Falls, SD 57106</div>
             <div class="prop-rooms" style="margin-bottom: 16px;">67 rooms · Extended stay</div>
-            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.7; font-weight: 300; border-top: 1px solid var(--line); padding-top: 14px;">The portfolio flagship. Extended-stay product on Sioux Falls' growing west side, serving medical, corporate, and relocation demand with the full Marriott Bonvoy distribution engine.</p>
+            <p class="prop-summary">The portfolio flagship. Extended-stay product on Sioux Falls' growing west side, serving medical, corporate, and relocation demand with the full Marriott Bonvoy distribution engine.</p>
           </div>
         </article>
       </a>
@@ -98,7 +98,7 @@
             </div>
             <div class="prop-addr">5100 N Cliff Ave, Sioux Falls, SD</div>
             <div class="prop-rooms" style="margin-bottom: 16px;">80 rooms · Pet friendly</div>
-            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.7; font-weight: 300; border-top: 1px solid var(--line); padding-top: 14px;">Value-tier Choice property serving North Sioux Falls. Steady-state economy asset with strong pet-travel and extended-duration business.</p>
+            <p class="prop-summary">Value-tier Choice property serving North Sioux Falls. Steady-state economy asset with strong pet-travel and extended-duration business.</p>
           </div>
         </article>
       </a>
@@ -107,8 +107,8 @@
 
     <div class="section-head" style="margin-bottom: 40px;">
       <span class="eyebrow">Active Conversions</span>
-      <h2 style="font-size: clamp(26px, 3.5vw, 38px); font-weight: 400; margin-top: 12px;">Three brand <em>upgrades</em> in motion.</h2>
-      <p style="font-size: 15px; color: var(--muted); margin-top: 14px;">Each of these assets is being repositioned to a higher-tier Choice flag — driving ADR uplift, tapping better distribution, and resetting the customer base.</p>
+      <h2>Three brand <em>upgrades</em> in motion.</h2>
+      <p>Each of these assets is being repositioned to a higher-tier Choice flag — driving ADR uplift, tapping better distribution, and resetting the customer base.</p>
     </div>
 
     <div class="property-grid">
@@ -129,7 +129,7 @@
             </div>
             <div class="prop-addr">850 Lucy Dr, Worthington, MN 56187</div>
             <div class="prop-rooms" style="margin-bottom: 16px;">56 rooms · Converting from Super 8</div>
-            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.7; font-weight: 300; border-top: 1px solid var(--line); padding-top: 14px;">Tier upgrade from Super 8 to Quality Inn. Expected ADR uplift of 25–35% on completion, with full PIP compliance and refreshed guest-facing spaces.</p>
+            <p class="prop-summary">Tier upgrade from Super 8 to Quality Inn. Expected ADR uplift of 25–35% on completion, with full PIP compliance and refreshed guest-facing spaces.</p>
           </div>
         </article>
       </a>
@@ -150,7 +150,7 @@
             </div>
             <div class="prop-addr">1202 S Kniss Ave, Luverne, MN 56156</div>
             <div class="prop-rooms" style="margin-bottom: 16px;">Converting from Super 8</div>
-            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.7; font-weight: 300; border-top: 1px solid var(--line); padding-top: 14px;">Rural Minnesota asset serving I-90 travelers and regional agricultural business. Converting to EconoLodge brings pet-friendly amenities and Choice distribution.</p>
+            <p class="prop-summary">Rural Minnesota asset serving I-90 travelers and regional agricultural business. Converting to EconoLodge brings pet-friendly amenities and Choice distribution.</p>
           </div>
         </article>
       </a>
@@ -171,7 +171,7 @@
             </div>
             <div class="prop-addr">801 S Kniss Ave, Luverne, MN 56156</div>
             <div class="prop-rooms" style="margin-bottom: 16px;">44 rooms · Converting from EconoLodge</div>
-            <p style="font-size: 13px; color: var(--ink-soft); line-height: 1.7; font-weight: 300; border-top: 1px solid var(--line); padding-top: 14px;">Second Luverne asset being repositioned up-brand. Pairs with the EconoLodge to create a dominant two-property presence in a market with limited branded competition.</p>
+            <p class="prop-summary">Second Luverne asset being repositioned up-brand. Pairs with the EconoLodge to create a dominant two-property presence in a market with limited branded competition.</p>
           </div>
         </article>
       </a>
@@ -187,16 +187,16 @@
       <h2>Operating under two of the <em>industry's</em> strongest flag families.</h2>
       <p>Every AHM property is branded — giving our investors the de-risking of national franchise systems, the booking power of Marriott Bonvoy and Choice Privileges, and PIP-driven capital discipline.</p>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
-      <div style="border-top: 1px solid var(--line); padding-top: 28px;">
-        <div style="font-family: var(--font-display); font-size: 24px; color: var(--navy); margin-bottom: 6px;">Marriott International</div>
-        <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brass); font-weight: 600; margin-bottom: 16px;">1 Property · Bonvoy Network</div>
-        <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.7; font-weight: 300;">TownePlace Suites operates as part of Marriott's extended-stay portfolio with access to the 200M+ Bonvoy member base and industry-leading corporate contracts.</p>
+    <div class="brand-grid">
+      <div class="brand-block">
+        <div class="brand-name">Marriott International</div>
+        <div class="brand-meta">1 Property · Bonvoy Network</div>
+        <p class="body-note">TownePlace Suites operates as part of Marriott's extended-stay portfolio with access to the 200M+ Bonvoy member base and industry-leading corporate contracts.</p>
       </div>
-      <div style="border-top: 1px solid var(--line); padding-top: 28px;">
-        <div style="font-family: var(--font-display); font-size: 24px; color: var(--navy); margin-bottom: 6px;">Choice Hotels International</div>
-        <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--brass); font-weight: 600; margin-bottom: 16px;">4 Properties · Choice Privileges</div>
-        <p style="font-size: 14px; color: var(--ink-soft); line-height: 1.7; font-weight: 300;">Four properties operate across Choice's value and mid-scale tiers — EconoLodge, Quality Inn, with active upward conversions driving ADR growth.</p>
+      <div class="brand-block">
+        <div class="brand-name">Choice Hotels International</div>
+        <div class="brand-meta">4 Properties · Choice Privileges</div>
+        <p class="body-note">Four properties operate across Choice's value and mid-scale tiers — EconoLodge, Quality Inn, with active upward conversions driving ADR growth.</p>
       </div>
     </div>
   </div>
