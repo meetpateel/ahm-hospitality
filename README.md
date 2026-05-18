@@ -63,34 +63,95 @@ The site is structurally complete but contains visible `[TODO: …]` placeholder
 12. **Plausible or Google Analytics.** Lightweight analytics to see who's reading the Investors page.
 13. **Legal page.** Footer link to privacy policy + terms — required if the form submission page collects personal info at any volume.
 
-## Design notes
+## Design system
 
-- Color tokens live in `:root` at the top of `styles.css` — change `--brass`, `--navy`, `--cream` there and the whole site updates.
-- Typography is Fraunces (display serif) + Manrope (body). Both from Google Fonts.
-- Breakpoints at 900px and 700px. The site is mobile-responsive.
-- Honest placeholder style: any `.placeholder` element uses cream background + dashed `--line` border + a small muted label. When a real image ships, swap the class to `.photo-ready` and add `background-image: url(...)`.
-- Brass accent is now restricted to CTAs, hover states, active nav indicator, and status badges only. Eyebrows use muted gray.
+**Tokens** (in `:root`, `styles.css:5-21`) — never use raw hex anywhere else:
+
+| Token | Value | Use |
+|---|---|---|
+| `--navy` | `#0F2A3F` | Primary brand, headings, logo, dark backgrounds |
+| `--navy-deep` | `#081B2C` | Footer, hero overlay edges, strategy items |
+| `--cream` | `#F6F1E8` | Page background, body text on navy |
+| `--cream-warm` | `#EFE7D6` | `section.alt` background, placeholder fill |
+| `--brass` | `#B5764F` | CTA, eyebrows on dark, hover, active nav, focus outline |
+| `--ink` | `#1A1A1A` | Default body text (use sparingly — harsh) |
+| `--ink-soft` | `#3D3D3D` | Story / narrative paragraphs |
+| `--muted` | `#6B6B6B` | Tertiary text, eyebrows on light, addresses |
+| `--line` | `#D9D2C4` | Borders on light bg |
+
+**Type scale** (canonical — every page renders identically):
+- `h1` = `clamp(36px, 6vw, 64px)` weight 300 (both `.hero` and `.page-hero`)
+- `h2` = `clamp(28px, 4vw, 44px)` weight 400 (every section header)
+- `h3` = `20px` weight 500 (cards and rows)
+- `.lead` = `clamp(15px, 1.6vw, 18px)` weight 300 (hero sub-text)
+- `.prose p` = `16px` line-height 1.8 (story body)
+- `.body-note` = `14px` line-height 1.7 (callouts, brand descriptions)
+- `.prop-summary` = `13px` line-height 1.7 (property card descriptions)
+- `.wire-verify` = `11px` opacity 0.6 (footer fine print)
+
+**Fonts**: Fraunces (display, italic at 600+) + Manrope. Both from Google Fonts via `@import` at the top of `styles.css`.
+
+**Mobile breakpoints** (cascading down):
+- `≤900px` — hamburger drawer; investor partnership rows collapse; property-detail/hero stack
+- `≤768px` — news items stack; topbar tightens; logo subtitle hides
+- `≤600px` — hero h1 scales down; property-specs `<dl>` stacks; gallery 1-col; form inputs forced to 16px (prevents iOS zoom)
+
+**Component classes** (re-use; don't duplicate):
+- `.section-head`, `.section-inner`, `.section-narrative` — page layout
+- `.prose`, `.body-note`, `.prop-summary`, `.wire-verify` — body paragraph variants
+- `.portfolio-stats` / `.portfolio-stat` — properties page header strip
+- `.brand-grid` / `.brand-block` / `.brand-name` / `.brand-meta` — franchise blocks
+- `.partnership-list` / `.partnership-row` / `.pr-label` — investors page LLC structure
+- `.contact-note` — cream callout with brass border
+- `.property-card`, `.property-card-link`, `.prop-*`, `.property-hero`, `.property-detail`, `.property-gallery`
+- `.btn`, `.btn-primary`, `.btn-ghost`, `.btn-dark`
+- `.eyebrow`, `.rule`
+- `.skip-link` (offscreen until keyboard-focused; targets `#main`)
+
+**Accessibility:**
+- Every page has `<a class="skip-link" href="#main">` right after `<body>`, and the first content `<section>` carries `id="main"`
+- `:focus-visible` puts a 2px brass outline on every interactive element — keyboard only, mouse clicks stay clean
+- Form inputs use 16px font on mobile to prevent iOS auto-zoom
+- All clickable surfaces are ≥44px tall on touch devices (`@media (pointer: coarse)`)
+- Decorative photos are `background-image` on `<div>`s — text alternatives come from the adjacent `h1`/`h3` or section heading
+
+**Anti-patterns** (rejected — see commit history):
+- Inline `style="font-size: ..."` blocks → use a class
+- Raw hex colors → use a token
+- Brass on cream for body paragraphs → AA fails at 13px (brass is for eyebrows, CTAs, accents only)
+- Per-page heading clamps (h2: 38 vs 44 vs 46 vs 48) → one canonical scale
+
+**Honest placeholder pattern**: any `.placeholder` element uses cream-warm background + dashed `--line` border + a small muted label. When a real photo ships, swap the class to `.photo-ready` and add `background-image: url(...)`.
 
 ## Files
 
-- `index.html` — Home
-- `about.html` — Family story, values
-- `leadership.html` — Named principals (NEW)
-- `properties.html` — Portfolio index (links to detail pages)
-- `properties/*.html` — 5 per-property detail pages (NEW)
-- `investors.html` — Thesis, playbook, track record, team, partnership structure, pipeline, request access
-- `news.html` — News & milestones (NEW)
-- `contact.html` — Contact form + direct emails
-- `styles.css` — Shared stylesheet
-- `RESEARCH.md` — Deep research doc referenced during the redesign
-- `PLAN.md` — Implementation plan for the redesign
+| File | Purpose |
+|---|---|
+| `index.html` | Home |
+| `about.html` | Family story, values, principles |
+| `leadership.html` | Named principals (4 slots) |
+| `properties.html` | Portfolio index (5 linked cards) |
+| `properties/*.html` | 5 per-property detail pages |
+| `investors.html` | Thesis, playbook, track record, pipeline, request-access form |
+| `news.html` | News & milestones (currently hidden from nav) |
+| `contact.html` | Contact form + direct emails |
+| `styles.css` | Shared stylesheet (~1.1k lines) |
+| `app.js` | Mobile nav toggle + scroll-reveal observer |
+| `tools/check_links.py` | Link / image / form-target linter — run before pushing |
 
 ## Local preview
 
-Just double-click `index.html` — it works offline. Or from a terminal:
+```bash
+python3 -m http.server 8000
+# open http://localhost:8000
+```
+
+## Linter
+
+Before pushing, run:
 
 ```bash
-cd ahm-hospitality
-python3 -m http.server 8000
-# Open http://localhost:8000
+python tools/check_links.py
 ```
+
+Reports any broken internal link, missing image on disk, or remaining `[TODO:` placeholder in an `href`.
