@@ -1,0 +1,15 @@
+# Drafting / planning docs — kept local
+PLAN.md
+RESEARCH.md
+TODO.md
+
+# Scratch / dev sandboxes
+claudedev/
+
+# OS + tooling junk
+.DS_Store
+Thumbs.db
+*.log
+*.stackdump
+.vscode/
+.idea/
