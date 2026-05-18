@@ -1175,6 +1175,56 @@ section.dark .value p { color: rgba(246, 241, 232, 0.7); }
 .reveal.in { opacity: 1; transform: translateY(0); }
 
 /* ============================================================
+   ACCESSIBILITY — keyboard focus styles + skip-to-content link.
+   `:focus-visible` only triggers on keyboard nav, so mouse
+   clicks don't draw the outline.
+   ============================================================ */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--brass);
+  outline-offset: 3px;
+}
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible,
+.contact-form select:focus-visible {
+  outline-offset: 0;
+  border-color: var(--brass);
+}
+.nav-toggle:focus-visible {
+  outline-offset: 6px;
+}
+.property-card-link:focus-visible {
+  outline-offset: 4px;
+}
+
+/* Skip link — translated offscreen until keyboard-focused */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateY(-100%);
+  background: var(--navy);
+  color: var(--cream);
+  padding: 12px 20px;
+  z-index: 300;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: transform 0.18s ease;
+}
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  color: var(--cream);
+  outline: 2px solid var(--brass);
+  outline-offset: 0;
+}
+
+/* ============================================================
    PARTNERSHIP STRUCTURE (Investors page) — refactored from
    duplicated inline styles into a single class so it actually
    collapses on mobile.
