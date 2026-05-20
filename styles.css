@@ -145,6 +145,32 @@ section.dark .section-narrative p { color: rgba(246, 241, 232, 0.78); }
 }
 
 /* ============================================================
+   NDA LIST — used on the Investors page "Under NDA you'll
+   receive" data-room contents block.
+   ============================================================ */
+.nda-list {
+  list-style: none;
+  margin: 0 0 28px;
+  padding: 0;
+}
+.nda-list li {
+  position: relative;
+  padding: 6px 0 6px 22px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  font-weight: 300;
+}
+.nda-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  color: var(--brass);
+  font-weight: 500;
+}
+
+/* ============================================================
    CONTACT-NOTE callout (Contact page "A note on response")
    ============================================================ */
 .contact-note {
