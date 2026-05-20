@@ -5,7 +5,11 @@ RESEARCH.md
 TODO.md
 
 # Scratch / dev sandboxes
+claudedev
 claudedev/
+
+# Claude Code local config
+.claude/
 
 # OS + tooling junk
 .DS_Store
