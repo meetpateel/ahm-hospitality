@@ -1,0 +1,7 @@
+# AHM Hospitality — robots policy
+
+User-agent: *
+Allow: /
+Disallow: /news.html
+
+Sitemap: https://ahmhospitality.com/sitemap.xml
