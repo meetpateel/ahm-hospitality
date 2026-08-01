@@ -8,10 +8,8 @@ A static website for Apex Hospitality Management.
 - `about.html` — Family story, values, growth strategy
 - `leadership.html` — Named principals and bios
 - `properties.html` — Portfolio index (links to per-property detail pages)
-- `properties/econolodge-luverne.html` — EconoLodge Luverne detail page
 - `properties/econolodge-north.html` — EconoLodge North (Sioux Falls) detail page
-- `properties/quality-inn-luverne.html` — Quality Inn Luverne detail page
-- `properties/quality-inn-sioux-falls.html` — Quality Inn Sioux Falls detail page
+- `properties/quality-inn-worthington.html` — Quality Inn Worthington detail page
 - `properties/towneplace-suites.html` — TownePlace Suites by Marriott detail page
 - `investors.html` — Thesis, playbook, track record, team, partnership structure, pipeline, request access
 - `news.html` — News & milestones
