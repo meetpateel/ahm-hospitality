@@ -35,6 +35,16 @@ Slugs: `towneplace-suites`, `econolodge-north`, `quality-inn-worthington`.
 6. Keep the canonical type scale. No per-page heading sizes.
 7. Adding or removing a page or property: update nav/footer on every page if linked, `sitemap.xml`, and any "three properties" copy.
 
+## Voice (for any site copy)
+
+Write like a direct, specific person, not a brochure.
+- Banned: delve / dive into, testament to, in conclusion / in summary / overall, "it is important to note", furthermore / moreover / additionally, "not only… but also", beacon / tapestry / landscape.
+- No reflexive lists of three, and no stacked "No X, no Y, no Z" lines.
+- Vary sentence length and openings. Mix short sentences with longer ones.
+- Cut throat-clearing and summary sentences. Prefer a concrete detail (a street, a room count, a hospital) to a generality.
+- Don't repeat the same line across pages. Each page gets its own wording.
+- Plain words over industry jargon on public pages ("67-room hotel", not "67-key product").
+
 ## Verify
 
 ```bash

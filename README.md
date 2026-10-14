@@ -15,9 +15,9 @@ Marketing and investor-relations site for **AHM Hospitality (Apex Hospitality Ma
 ```
 .
 ├── index.html                 Home: hero, 3-property grid, "we operate what we own", investor band
-├── about.html                 Family history (since 2015), operating principles
+├── about.html                 Family history (since 2015), operating principles (2×2 grid)
 ├── leadership.html            Family principals
-├── properties.html            Portfolio index: operating properties + conversion, brand blocks
+├── properties.html            Portfolio index: all 3 property cards, stats strip, brand blocks
 ├── properties/
 │   ├── towneplace-suites.html         TownePlace Suites by Marriott (Sioux Falls), 67 rooms, flagship
 │   ├── econolodge-north.html          EconoLodge North (Sioux Falls), 80 rooms
@@ -99,7 +99,7 @@ Each page is self-contained HTML that repeats the same shared chrome:
 
 **Breakpoints:** `≤900px` hamburger drawer and stacked layouts · `≤768px` news/topbar tighten · `≤600px` hero scales down, gallery is 1 column, inputs forced to 16px (prevents iOS zoom).
 
-**Reusable components:** `.section-head` (`.tight` variant), `.section-inner`, `.section-narrative` · `.property-grid` (`.detailed` variant on the properties page) / `.property-card` / `.prop-*` · `.property-hero`, `.property-detail`, `.property-gallery`, `.gallery-tile` · `.brand-grid` / `.brand-block` · `.partnership-list` / `.partnership-row` · `.investor-band` / `.investor-inner` · `.contact-grid`, `.contact-form`, `.contact-note` · `.btn` + `.btn-primary | .btn-ghost | .btn-dark` · `.center-cta` · `.eyebrow` · `.skip-link`.
+**Reusable components:** `.section-head` (`.tight` variant), `.section-inner`, `.section-narrative` · `.property-grid` (`.detailed` variant on the properties page: 16:10 photos, address + summary; the `.adr` slot holds the brand tier, not a rate) / `.property-card` / `.prop-*` · `.property-hero`, `.property-detail`, `.property-gallery`, `.gallery-tile` · `.brand-grid` / `.brand-block` · `.partnership-list` / `.partnership-row` · `.investor-band` / `.investor-inner` · `.contact-grid`, `.contact-form`, `.contact-note` · `.btn` + `.btn-primary | .btn-ghost | .btn-dark` · `.center-cta` · `.eyebrow` · `.skip-link`.
 
 Defined but currently unused (kept for reuse): `section.dark`, `.prose`, `.rule`, `.container`, `.opportunity*` (the Active Pipeline cards, removed from investors.html after the Luverne deals fell through).
 
@@ -111,12 +111,15 @@ Defined but currently unused (kept for reuse): `section.dark`, `.prose`, `.rule`
 
 Sizing and positioning come from CSS. Until a real photo exists, use the `.placeholder` class with a `.placeholder-label` instead.
 
+Leadership portraits use `.leader-photo.monogram` (navy tile with the person's initials) until real portraits exist. When one does, swap `monogram` for `photo-ready` and add the `background-image`.
+
 **Accessibility:** skip link on every page · brass `:focus-visible` outline · touch targets ≥44px on coarse pointers · AA contrast (brass is for eyebrows/CTAs/accents only, never body copy on cream).
 
-**Rejected patterns** (see git history): inline `style=` for anything but `background-image` · raw hex colors · per-page heading sizes · italic `<em>` accent words in headlines (five remain on properties.html; removing them is a copy decision).
+**Rejected patterns** (see git history): inline `style=` for anything but `background-image` · raw hex colors · per-page heading sizes · italic `<em>` accent words in headlines · public ADR or other performance figures outside the investors page.
 
 ## Content rules
 
+- Copy follows the voice rules in `CLAUDE.md` (no AI-isms or reflexive lists of three; concrete over generic).
 - **Never invent facts.** Names, dates, room counts, occupancy, ADR, dollar figures, and returns come from the family only. Where content is missing, leave a visible `[TODO: …]` marker. `grep -rn "\[TODO" --include=*.html .` lists them.
 - This is an investor-facing site with securities-adjacent content (`investors.html`, `risk-factors.html`). Treat performance claims, return figures, and risk language as legal copy: change them only when explicitly asked.
 - When a property is added or removed, update: `properties/<slug>.html`, `photos/<slug>*`, `properties.html`, the home grid in `index.html`, the "three properties" wording in hero/CTA copy, `investors.html` track record, `sitemap.xml`, and OG tags if the image changes.
