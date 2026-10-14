@@ -1,9 +1,13 @@
 """
-Walks every .html under the repo root, extracts every href/src,
-classifies internal vs external, and verifies internal targets exist on disk
-plus return 200 against http://localhost:8000.
+Walks every .html under the repo root, extracts every href/src/form action,
+classifies internal vs external, and verifies internal targets exist on disk.
+If a local server is running on http://localhost:8000 it also checks each
+internal link returns 2xx/3xx; otherwise that HTTP pass is skipped.
 
-Usage: python tools/check_links.py
+Usage:
+    python tools/check_links.py              # disk checks only (fast)
+    python -m http.server 8000 &             # optional, enables HTTP pass
+    python tools/check_links.py
 """
 from __future__ import annotations
 import os
@@ -17,12 +21,22 @@ from urllib.error import URLError, HTTPError
 ROOT = Path(__file__).resolve().parent.parent
 SERVER = "http://localhost:8000"
 
-ATTR_RE = re.compile(r"""(?:href|src)\s*=\s*["']([^"']+)["']""", re.IGNORECASE)
+ATTR_RE = re.compile(r"""(?:href|src|action)\s*=\s*["']([^"']+)["']""", re.IGNORECASE)
 INLINE_URL_RE = re.compile(r"""url\(\s*['"]?([^'")]+)['"]?\s*\)""", re.IGNORECASE)
 
 results: list[tuple[str, int, str, str, str]] = []  # file, line, kind, target, status
+server_up = False
+
+def probe_server() -> bool:
+    try:
+        with urlopen(f"{SERVER}/", timeout=1):
+            return True
+    except (URLError, HTTPError, OSError):
+        return False
 
 def classify(target: str) -> str:
+    if "[TODO" in target or target.strip() == "":
+        return "todo"
     p = urlparse(target)
     if p.scheme in ("http", "https"):
         return "external"
@@ -32,8 +46,6 @@ def classify(target: str) -> str:
         return "tel"
     if target.startswith("#"):
         return "anchor"
-    if "[TODO" in target or target.strip() == "":
-        return "todo"
     return "internal"
 
 def resolve_internal(html_file: Path, target: str) -> Path:
@@ -70,7 +82,7 @@ def scan(html_file: Path) -> None:
                 disk = resolve_internal(html_file, target)
                 if not disk.exists():
                     results.append((str(html_file.relative_to(ROOT)), lineno, "BROKEN-DISK", target, "missing on disk"))
-                else:
+                elif server_up:
                     status = check_server(target, html_file)
                     if not status.startswith("HTTP 2") and not status.startswith("HTTP 3"):
                         results.append((str(html_file.relative_to(ROOT)), lineno, "BROKEN-HTTP", target, status))
@@ -85,12 +97,16 @@ def scan(html_file: Path) -> None:
                     results.append((str(html_file.relative_to(ROOT)), lineno, "BROKEN-IMG", target, "image missing on disk"))
 
 def main() -> int:
+    global server_up
+    server_up = probe_server()
+    if not server_up:
+        print(f"Note: no server at {SERVER} - skipping HTTP checks (disk checks still run).")
     for html in sorted(ROOT.rglob("*.html")):
         if "tools" in html.parts:
             continue
         scan(html)
     if not results:
-        print("OK — no broken or placeholder links found.")
+        print("OK - no broken or placeholder links found.")
         return 0
     print(f"{len(results)} issue(s):\n")
     by_kind: dict[str, list] = {}

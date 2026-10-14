@@ -558,11 +558,25 @@ section.dark .prop-addr { color: rgba(246, 241, 232, 0.55); }
   z-index: 1;
 }
 
-/* Ready state — once real background-image is assigned inline */
-.prop-img.photo-ready {
+/* Ready state — once real background-image is assigned inline.
+   The HTML only carries `style="background-image: url(...)"`.
+   Selectors are qualified so they outrank the `background:` shorthand
+   on .property-hero-img / .gallery-tile, which would reset size/position. */
+.prop-img.photo-ready,
+.property-hero-img.photo-ready,
+.gallery-tile.photo-ready {
   background-size: cover;
   background-position: center;
 }
+
+/* Properties page: wider 16:10 cards with extra breathing room */
+.property-grid.detailed .prop-img { aspect-ratio: 16 / 10; }
+.property-grid.detailed .prop-rooms { margin-bottom: 16px; }
+.property-grid.detailed:not(:last-child) { margin-bottom: 80px; }
+.section-head.tight { margin-bottom: 40px; }
+
+/* Centered single-button row below a grid (home page) */
+.center-cta { text-align: center; margin-top: 56px; }
 
 /* ===== INVESTOR BAND ===== */
 .investor-band {
@@ -582,6 +596,7 @@ section.dark .prop-addr { color: rgba(246, 241, 232, 0.55); }
   font-weight: 300;
   color: var(--cream);
   line-height: 1.2;
+  margin-top: 18px;
   margin-bottom: 18px;
   /* size inherits from canonical h2 */
 }
@@ -783,6 +798,7 @@ section.dark .value p { color: rgba(246, 241, 232, 0.7); }
   max-width: var(--max);
   margin: 0 auto;
 }
+.contact-grid.spaced-top { margin-top: 40px; }
 .contact-info h3 {
   font-size: 14px;
   font-weight: 600;

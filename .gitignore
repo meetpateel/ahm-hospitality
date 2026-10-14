@@ -1,14 +1,7 @@
-# Drafting / planning docs — kept local
-PLAN.md
-PLAN_DESIGN.md
-RESEARCH.md
-TODO.md
+# Drafting / planning docs — kept local (see notes/)
+notes/
 
-# Scratch / dev sandboxes
-claudedev
-claudedev/
-
-# Claude Code local config
+# Claude Code local config (CLAUDE.md at the root IS tracked)
 .claude/
 
 # OS + tooling junk
@@ -16,5 +9,6 @@ claudedev/
 Thumbs.db
 *.log
 *.stackdump
+__pycache__/
 .vscode/
 .idea/
